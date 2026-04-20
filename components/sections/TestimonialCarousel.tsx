@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // DRAFT — replace with real patient reviews (with patient consent) before launch
@@ -72,20 +72,33 @@ export function TestimonialCarousel({ locale }: TestimonialCarouselProps) {
     : text;
 
   return (
-    <div className="relative bg-[#e8f4f6] rounded-2xl p-8 md:p-10">
+    <div
+      className="relative rounded-2xl p-8 md:p-10 overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #e0f6f9 0%, #e6f6fb 100%)", border: "1px solid rgba(26,143,173,0.15)" }}
+    >
+      {/* Decorative quote icon */}
+      <div
+        className="absolute top-6 right-8 opacity-10"
+        aria-hidden="true"
+      >
+        <Quote className="h-16 w-16" style={{ color: "#0b6b7a" }} />
+      </div>
+
       {/* Stars */}
       <div className="flex gap-1 mb-5" aria-label={`${t.rating} ulduz`}>
         {Array.from({ length: t.rating }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 fill-[#c96a3e] text-[#c96a3e]" aria-hidden="true" />
+          <Star key={i} className="h-4 w-4" style={{ fill: "#d4603a", color: "#d4603a" }} aria-hidden="true" />
         ))}
       </div>
 
-      <blockquote>
-        <p className="text-[#2e2b27] text-lg leading-relaxed font-serif italic mb-6">
+      <blockquote className="relative z-10">
+        <p className="text-lg leading-relaxed font-serif italic mb-6" style={{ color: "#2c2824" }}>
           &ldquo;{cleanText}&rdquo;
         </p>
         <footer>
-          <cite className="not-italic text-sm font-semibold text-[#0b6b7a]">— {name}</cite>
+          <cite className="not-italic text-sm font-semibold" style={{ color: "#0b6b7a" }}>
+            — {name}
+          </cite>
         </footer>
       </blockquote>
 
@@ -93,12 +106,13 @@ export function TestimonialCarousel({ locale }: TestimonialCarouselProps) {
       <div className="flex items-center gap-3 mt-8">
         <button
           onClick={prev}
-          className="p-2 rounded-xl bg-white hover:bg-[#d0ecf0] transition-colors text-[#0b6b7a]"
+          className="p-2 rounded-xl transition-all hover:scale-110"
+          style={{ background: "white", color: "#0b6b7a", boxShadow: "0 1px 6px rgba(0,0,0,0.08)" }}
           aria-label="Əvvəlki rəy"
         >
           <ChevronLeft className="h-4 w-4" aria-hidden="true" />
         </button>
-        {/* Dots */}
+
         <div className="flex gap-1.5" role="tablist" aria-label="Rəy naviqasiyası">
           {testimonials.map((_, i) => (
             <button
@@ -107,16 +121,19 @@ export function TestimonialCarousel({ locale }: TestimonialCarouselProps) {
               role="tab"
               aria-selected={i === current}
               aria-label={`Rəy ${i + 1}`}
-              className={cn(
-                "w-2 h-2 rounded-full transition-all",
-                i === current ? "bg-[#0b6b7a] w-5" : "bg-[#b0a99e]"
-              )}
+              className={cn("h-2 rounded-full transition-all duration-300")}
+              style={{
+                width: i === current ? "20px" : "8px",
+                background: i === current ? "#0b6b7a" : "#b0ccd0",
+              }}
             />
           ))}
         </div>
+
         <button
           onClick={next}
-          className="p-2 rounded-xl bg-white hover:bg-[#d0ecf0] transition-colors text-[#0b6b7a]"
+          className="p-2 rounded-xl transition-all hover:scale-110"
+          style={{ background: "white", color: "#0b6b7a", boxShadow: "0 1px 6px rgba(0,0,0,0.08)" }}
           aria-label="Növbəti rəy"
         >
           <ChevronRight className="h-4 w-4" aria-hidden="true" />

@@ -1,7 +1,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { DoctorCard } from "@/components/site/DoctorCard";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { getFeaturedDoctors } from "@/lib/doctors";
 
 export function DoctorsPreview() {
@@ -10,24 +10,44 @@ export function DoctorsPreview() {
   const featured = getFeaturedDoctors();
 
   return (
-    <section className="py-24 bg-[#f5f3ef]" aria-labelledby="doctors-heading">
-      <div className="container-site">
+    <section
+      className="py-24 relative overflow-hidden"
+      aria-labelledby="doctors-heading"
+      style={{ background: "linear-gradient(180deg, #f3f1ed 0%, #f9f8f6 100%)" }}
+    >
+      {/* Decorative blob */}
+      <div
+        className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(11,107,122,0.06) 0%, transparent 70%)", transform: "translate(30%, -30%)" }}
+        aria-hidden="true"
+      />
+
+      <div className="container-site relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
           <div>
-            <p className="text-sm font-medium text-[#0b6b7a] mb-2 uppercase tracking-wider">
-              Komanda
-            </p>
+            <span
+              className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3"
+              style={{ background: "rgba(11,107,122,0.1)", color: "#0b6b7a", letterSpacing: "0.08em" }}
+            >
+              KOMANDA
+            </span>
             <h2
               id="doctors-heading"
-              className="font-serif text-3xl md:text-4xl text-[#1a1816] text-balance"
+              className="font-serif text-3xl md:text-4xl text-balance"
+              style={{ color: "#1a1714" }}
             >
               {t("title")}
             </h2>
-            <p className="text-[#6b6460] mt-2 max-w-xl">{t("subtitle")}</p>
+            <p className="mt-2 max-w-xl" style={{ color: "#645e57" }}>{t("subtitle")}</p>
           </div>
-          <Button variant="outline" asChild className="shrink-0">
-            <Link href="/hekimlerimiz">{t("viewAll")}</Link>
-          </Button>
+          <Link
+            href="/hekimlerimiz"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm border shrink-0 transition-all hover:shadow-md"
+            style={{ borderColor: "#0b6b7a", color: "#0b6b7a", background: "white" }}
+          >
+            {t("viewAll")}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
