@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "doctors": "Our Doctors",
+    "checkup": "Check-up",
+    "blog": "Blog",
+    "events": "Events",
+    "forPatients": "For Patients",
+    "contact": "Contact",
+    "bookAppointment": "Book Appointment"
+  },
+  "hero": {
+    "headline": "Specialist care for a life without pain",
+    "subheadline": "Baku Pain Clinic — treating chronic pain with advanced interventional techniques.",
+    "ctaPrimary": "Book an Appointment",
+    "ctaSecondary": "Our Services",
+    "address": "Mirali Seyidov 10C, Yasamal, Baku"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "A comprehensive range of pain management services",
+    "viewAll": "View all services",
+    "learnMore": "Learn more"
+  },
+  "doctors": {
+    "title": "Our Doctors",
+    "subtitle": "A team of experienced specialists",
+    "viewProfile": "View profile",
+    "viewAll": "All doctors"
+  },
+  "about": {
+    "title": "About Baku Pain Clinic",
+    "subtitle": "One of the first specialised pain centres in Azerbaijan",
+    "learnMore": "Read more"
+  },
+  "cta": {
+    "title": "Book an Appointment",
+    "subtitle": "Suffering from chronic pain? Our specialists are ready to help you.",
+    "button": "Book now",
+    "or": "or call us"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with us",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+994 XX XXX XX XX",
+      "email": "Email (optional)",
+      "emailPlaceholder": "email@example.com",
+      "service": "Select a service",
+      "servicePlaceholder": "Choose a service...",
+      "date": "Preferred date",
+      "message": "Message",
+      "messagePlaceholder": "Write your question or enquiry...",
+      "submit": "Send",
+      "sending": "Sending...",
+      "successTitle": "Request received",
+      "successMessage": "We will contact you shortly.",
+      "errorTitle": "An error occurred",
+      "errorMessage": "Please try again."
+    },
+    "hours": "Opening Hours",
+    "weekdays": "Weekdays",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "getDirections": "Get directions",
+    "callUs": "Call us"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "tagline": "Specialist care for a life without pain"
+  },
+  "common": {
+    "readMore": "Read more",
+    "backToList": "Back to list",
+    "loading": "Loading...",
+    "close": "Close",
+    "open": "Open",
+    "call": "Call",
+    "draft": "DRAFT — to be reviewed by medical leadership"
+  },
+  "cookies": {
+    "message": "This site uses cookies to improve your experience.",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learnMore": "Learn more"
+  },
+  "appointmentBar": {
+    "label": "Call"
+  }
+}

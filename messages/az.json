@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Ana Səhifə",
+    "about": "Haqqımızda",
+    "services": "Xidmətlər",
+    "doctors": "Həkimlərimiz",
+    "checkup": "Check-up",
+    "blog": "Bloq",
+    "events": "Tədbirlər",
+    "forPatients": "Xəstələrə",
+    "contact": "Əlaqə",
+    "bookAppointment": "Qəbula yazıl"
+  },
+  "hero": {
+    "headline": "Ağrısız həyat üçün ixtisaslaşmış həkim köməyi",
+    "subheadline": "Bakı Ağrı Klinikası — müasir girişimsəl üsullarla xroniki ağrıların müalicəsini təmin edir.",
+    "ctaPrimary": "Qəbula yazıl",
+    "ctaSecondary": "Xidmətlərimiz",
+    "address": "Mirəli Seyidov 10C, Yasamal, Bakı"
+  },
+  "services": {
+    "title": "Xidmətlərimiz",
+    "subtitle": "Ağrı menecmenti üzrə geniş xidmət çeşidi",
+    "viewAll": "Hamısına bax",
+    "learnMore": "Ətraflı"
+  },
+  "doctors": {
+    "title": "Həkimlərimiz",
+    "subtitle": "Təcrübəli mütəxəssislər komandası",
+    "viewProfile": "Profilə bax",
+    "viewAll": "Bütün həkimlər"
+  },
+  "about": {
+    "title": "Bakı Ağrı Klinikası haqqında",
+    "subtitle": "Azərbaycanda ilk ixtisaslaşmış ağrı mərkəzlərindən biri",
+    "learnMore": "Ətraflı oxu"
+  },
+  "cta": {
+    "title": "Qəbul üçün yazılın",
+    "subtitle": "Xroniki ağrılardan əziyyət çəkirsiniz? Mütəxəssislərimiz sizə kömək etməyə hazırdır.",
+    "button": "İndi yazıl",
+    "or": "və ya zəng edin"
+  },
+  "contact": {
+    "title": "Əlaqə",
+    "subtitle": "Bizimlə əlaqə saxlayın",
+    "form": {
+      "name": "Ad Soyad",
+      "namePlaceholder": "Adınızı daxil edin",
+      "phone": "Telefon nömrəsi",
+      "phonePlaceholder": "+994 XX XXX XX XX",
+      "email": "E-poçt (istəyə görə)",
+      "emailPlaceholder": "email@example.com",
+      "service": "Xidmət seçin",
+      "servicePlaceholder": "Xidmət seçin...",
+      "date": "Üstünlük verilən tarix",
+      "message": "Mesajınız",
+      "messagePlaceholder": "Sualınızı və ya müraciətinizi yazın...",
+      "submit": "Göndər",
+      "sending": "Göndərilir...",
+      "successTitle": "Müraciətiniz qəbul edildi",
+      "successMessage": "Tezliklə sizinlə əlaqə saxlayacağıq.",
+      "errorTitle": "Xəta baş verdi",
+      "errorMessage": "Zəhmət olmasa yenidən cəhd edin."
+    },
+    "hours": "İş saatları",
+    "weekdays": "Həftəiçi",
+    "saturday": "Şənbə",
+    "sunday": "Bazar",
+    "getDirections": "Yolu göstər",
+    "callUs": "Zəng edin"
+  },
+  "footer": {
+    "rights": "Bütün hüquqlar qorunur",
+    "privacy": "Məxfilik siyasəti",
+    "terms": "İstifadə şərtləri",
+    "tagline": "Ağrısız həyat üçün ixtisaslaşmış həkim köməyi"
+  },
+  "common": {
+    "readMore": "Daha çox oxu",
+    "backToList": "Siyahıya qayıt",
+    "loading": "Yüklənir...",
+    "close": "Bağla",
+    "open": "Aç",
+    "call": "Zəng et",
+    "draft": "LAYIHƏ — Tibbi rəhbərlik tərəfindən nəzərdən keçirilməlidir"
+  },
+  "cookies": {
+    "message": "Bu sayt istifadəçi təcrübəsini yaxşılaşdırmaq üçün cookie-lərdən istifadə edir.",
+    "accept": "Qəbul et",
+    "decline": "İmtina et",
+    "learnMore": "Ətraflı"
+  },
+  "appointmentBar": {
+    "label": "Zəng et"
+  }
+}
