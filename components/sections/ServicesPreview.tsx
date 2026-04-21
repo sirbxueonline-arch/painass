@@ -1,9 +1,8 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ServiceCard } from "@/components/site/ServiceCard";
-import { Button } from "@/components/ui/button";
 import { getFeaturedServices } from "@/lib/services";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export function ServicesPreview() {
   const t = useTranslations("services");
@@ -12,46 +11,82 @@ export function ServicesPreview() {
 
   return (
     <section
-      className="py-24 relative overflow-hidden"
+      className="relative py-28 overflow-hidden"
       aria-labelledby="services-heading"
-      style={{ background: "linear-gradient(180deg, #f9f8f6 0%, #e6f6fb 100%)" }}
+      style={{ background: "#f9f8f6" }}
     >
-      {/* Subtle top accent line */}
+      {/* Ambient background blobs */}
       <div
-        className="absolute top-0 inset-x-0 h-1"
-        style={{ background: "linear-gradient(90deg, #0b6b7a 0%, #1a8fad 50%, #14b3cc 100%)" }}
+        className="absolute top-20 -left-40 w-[500px] h-[500px] rounded-full opacity-50 pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(26,143,173,0.12) 0%, transparent 70%)" }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-20 -right-40 w-[600px] h-[600px] rounded-full opacity-60 pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(45,122,89,0.08) 0%, transparent 70%)" }}
         aria-hidden="true"
       />
 
-      <div className="container-site">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
-          <div>
-            <span
-              className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3"
-              style={{ background: "rgba(26,143,173,0.12)", color: "#1a8fad", letterSpacing: "0.08em" }}
+      <div className="container-site relative">
+        {/* Section header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+          <div className="max-w-2xl">
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5"
+              style={{ background: "rgba(26,143,173,0.1)" }}
             >
-              XİDMƏTLƏR
-            </span>
+              <Sparkles className="h-3.5 w-3.5" style={{ color: "#1a8fad" }} aria-hidden="true" />
+              <span
+                className="text-xs font-semibold uppercase"
+                style={{ color: "#1a8fad", letterSpacing: "0.1em" }}
+              >
+                Xidmətlərimiz
+              </span>
+            </div>
             <h2
               id="services-heading"
-              className="font-serif text-3xl md:text-4xl text-balance"
-              style={{ color: "#1a1714" }}
+              className="font-serif text-balance"
+              style={{
+                fontSize: "clamp(2rem, 4.5vw, 3.25rem)",
+                fontWeight: 500,
+                lineHeight: 1.05,
+                letterSpacing: "-0.02em",
+                color: "#1a1714",
+              }}
             >
-              {t("title")}
+              Müasir{" "}
+              <span style={{ fontStyle: "italic", color: "#1a8fad", fontWeight: 400 }}>
+                girişimsəl
+              </span>{" "}
+              ağrı müalicəsi
             </h2>
-            <p className="mt-2 max-w-xl" style={{ color: "#645e57" }}>{t("subtitle")}</p>
+            <p className="mt-5 text-lg leading-relaxed max-w-xl" style={{ color: "#645e57" }}>
+              {t("subtitle")}
+            </p>
           </div>
+
           <Link
             href="/xidmetler"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm border shrink-0 transition-all hover:shadow-md"
-            style={{ borderColor: "#1a8fad", color: "#1a8fad", background: "white" }}
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold text-sm transition-all hover:gap-3 hover:shadow-lg shrink-0"
+            style={{
+              background: "white",
+              border: "1px solid #e6e1d9",
+              color: "#0b6b7a",
+              boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+            }}
           >
             {t("viewAll")}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <span
+              className="inline-flex items-center justify-center w-6 h-6 rounded-full transition-all group-hover:w-8"
+              style={{ background: "linear-gradient(135deg, #0b6b7a 0%, #1a8fad 100%)" }}
+            >
+              <ArrowRight className="h-3.5 w-3.5 text-white" aria-hidden="true" />
+            </span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((service, i) => (
             <ServiceCard
               key={service.slug}

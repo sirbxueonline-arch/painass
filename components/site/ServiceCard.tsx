@@ -4,27 +4,17 @@ import { cn } from "@/lib/utils";
 import type { Service } from "@/lib/services";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Waves,
-  Scan,
-  Zap,
-  Radio,
-  Target,
-  Activity,
-  Heart,
-  Brain,
-  ClipboardList,
-  Syringe,
-  Bone,
+  Waves, Scan, Zap, Radio, Target, Activity, Heart, Brain, ClipboardList, Syringe, Bone,
 };
 
-// Cycle through brand accent colors for visual variety
+// Rich accent palette — gradient-based for each card
 const accentColors = [
-  { bg: "rgba(11,107,122,0.1)", icon: "#0b6b7a", hover: "#0b6b7a", bar: "#0b6b7a" },
-  { bg: "rgba(26,143,173,0.1)", icon: "#1a8fad", hover: "#1a8fad", bar: "#1a8fad" },
-  { bg: "rgba(45,122,89,0.1)",  icon: "#2d7a59", hover: "#2d7a59", bar: "#2d7a59" },
-  { bg: "rgba(212,96,58,0.1)",  icon: "#d4603a", hover: "#d4603a", bar: "#d4603a" },
-  { bg: "rgba(20,179,204,0.1)", icon: "#14b3cc", hover: "#14b3cc", bar: "#14b3cc" },
-  { bg: "rgba(11,107,122,0.1)", icon: "#0b6b7a", hover: "#0b6b7a", bar: "#0b6b7a" },
+  { from: "#0b6b7a", to: "#1a8fad", pale: "rgba(11,107,122,0.06)" },
+  { from: "#1a8fad", to: "#14b3cc", pale: "rgba(26,143,173,0.06)" },
+  { from: "#2d7a59", to: "#3a9b70", pale: "rgba(45,122,89,0.06)" },
+  { from: "#d4603a", to: "#e07450", pale: "rgba(212,96,58,0.06)" },
+  { from: "#14b3cc", to: "#5dd8ec", pale: "rgba(20,179,204,0.06)" },
+  { from: "#0e8fa0", to: "#0b6b7a", pale: "rgba(14,143,160,0.06)" },
 ];
 
 interface ServiceCardProps {
@@ -37,18 +27,9 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service, locale, learnMoreLabel, className, colorIndex = 0 }: ServiceCardProps) {
   const title =
-    locale === "ru"
-      ? service.titleRu
-      : locale === "en"
-        ? service.titleEn
-        : service.titleAz;
-
+    locale === "ru" ? service.titleRu : locale === "en" ? service.titleEn : service.titleAz;
   const summary =
-    locale === "ru"
-      ? service.summaryRu
-      : locale === "en"
-        ? service.summaryEn
-        : service.summaryAz;
+    locale === "ru" ? service.summaryRu : locale === "en" ? service.summaryEn : service.summaryAz;
 
   const cleanSummary = summary.startsWith("//")
     ? summary.replace(/^\/\/ (DRAFT|TODO)[^:]*:\s*/i, "").trim()
@@ -56,36 +37,77 @@ export function ServiceCard({ service, locale, learnMoreLabel, className, colorI
 
   const Icon = iconMap[service.icon] ?? Activity;
   const accent = accentColors[colorIndex % accentColors.length];
+  const number = String(colorIndex + 1).padStart(2, "0");
 
   return (
     <article
       className={cn(
-        "group bg-white rounded-2xl border border-[#e6e1d9] p-6 hover:shadow-xl transition-all duration-300 relative overflow-hidden",
+        "group relative bg-white rounded-[20px] p-7 overflow-hidden transition-all duration-500 hover:-translate-y-1",
         className
       )}
-      style={{ borderTopColor: accent.bar, borderTopWidth: "3px" }}
+      style={{
+        border: "1px solid rgba(230,225,217,0.8)",
+        boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
+      }}
     >
-      {/* Icon */}
+      {/* Hover gradient wash */}
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-all duration-300"
-        style={{ background: accent.bg }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{ background: `linear-gradient(135deg, ${accent.pale} 0%, transparent 70%)` }}
+        aria-hidden="true"
+      />
+
+      {/* Hover shadow layer */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[20px] pointer-events-none -z-10"
+        style={{ boxShadow: `0 20px 50px -15px ${accent.from}33, 0 8px 20px -8px ${accent.from}22` }}
+        aria-hidden="true"
+      />
+
+      {/* Number watermark */}
+      <span
+        className="absolute top-5 right-6 font-serif text-4xl font-light opacity-[0.08] transition-opacity group-hover:opacity-[0.18] pointer-events-none"
+        style={{ color: accent.from }}
+        aria-hidden="true"
       >
-        <span style={{ color: accent.icon }} aria-hidden="true">
-          <Icon className="h-5 w-5" />
-        </span>
+        {number}
+      </span>
+
+      {/* Icon with gradient background */}
+      <div className="relative mb-5">
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-105 group-hover:rotate-[-4deg]"
+          style={{
+            background: `linear-gradient(135deg, ${accent.from} 0%, ${accent.to} 100%)`,
+            boxShadow: `0 8px 20px -6px ${accent.from}66`,
+          }}
+        >
+          <span style={{ color: "white" }} aria-hidden="true">
+            <Icon className="h-6 w-6" />
+          </span>
+        </div>
       </div>
 
-      <h3 className="text-[#1a1714] font-serif text-lg mb-2 leading-snug">{title}</h3>
-      <p className="text-sm text-[#645e57] leading-relaxed mb-4 line-clamp-3">{cleanSummary}</p>
+      <h3 className="font-serif text-xl mb-3 leading-snug relative" style={{ color: "#1a1714" }}>
+        {title}
+      </h3>
+      <p className="text-sm leading-relaxed mb-6 line-clamp-3 relative" style={{ color: "#645e57" }}>
+        {cleanSummary}
+      </p>
 
       <Link
         href={{ pathname: "/xidmetler/[slug]", params: { slug: service.slug } }}
-        className="inline-flex items-center gap-1.5 text-sm font-semibold hover:gap-2.5 transition-all"
-        style={{ color: accent.icon }}
+        className="relative inline-flex items-center gap-2 text-sm font-semibold transition-all group/link"
+        style={{ color: accent.from }}
         aria-label={`${learnMoreLabel}: ${title}`}
       >
-        {learnMoreLabel}
-        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+        <span>{learnMoreLabel}</span>
+        <span
+          className="inline-flex items-center justify-center w-6 h-6 rounded-full transition-all duration-300 group-hover/link:w-9"
+          style={{ background: accent.pale }}
+        >
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
+        </span>
       </Link>
     </article>
   );
